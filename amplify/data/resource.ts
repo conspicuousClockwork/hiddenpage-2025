@@ -12,6 +12,22 @@ const schema = a.schema({
       content: a.string(),
     })
     .authorization(allow => [allow.owner()]),
+  Resources: a
+    .model({
+      bits: a.integer(),
+    })
+    .authorization(allow => [allow.owner()]),
+  VRO: a
+    .model({
+      owner: a.id(),
+    })
+    .authorization(allow => [allow.owner()]),
+  PatreonLinks: a
+    .model({
+      owner: a.id(),
+      patreonName: a.string(),
+    })
+    .authorization(allow => [allow.owner()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
